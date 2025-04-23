@@ -17,7 +17,7 @@ function flovers(waterCount, volume) {
 
 function bags(flovercount) { // проверяем входящие значения
     if (flovercount < 0) {
-        console.log("введено невозможное значение");
+        console.log("\nвведено невозможное значение");
         process.exit(0); // если входящее число не удовлетворяет условию, завершаем выполнение программы
     }
     return 1;
@@ -36,24 +36,24 @@ function main() {
         let vecWaterCount = []; // массив для хранения потребностей цветов
         let waterCountInput = (i) => {
             if (i < floversCount) {
-                readline.question(`${i + 1} цветок: `, (waterCount) => {
+                readline.question(`\n${i + 1} цветок: `, (waterCount) => {
                     waterCount = parseInt(waterCount);
                     bags(waterCount);
                     vecWaterCount.push(waterCount);
                     waterCountInput(i + 1);
                 });
             } else {
-                readline.question('Введите объем лейки: ', (volume) => {
+                readline.question('\nВведите объем лейки: ', (volume) => {
                     volume = parseInt(volume);
                     bags(volume);
                     let steps = flovers(vecWaterCount, volume);
-                    console.log(`${steps} шагов вы сделаете`);
+                    console.log(`\n${steps} шагов вы сделаете\n`);
                     readline.close();
                 });
             }
         };
         
-        console.log("Введите кол-во воды, нужное для каждого цветка");
+        console.log("\nВведите кол-во воды, нужное для каждого цветка");
         waterCountInput(0);
     });
 }
