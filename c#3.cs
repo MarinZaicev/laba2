@@ -2,7 +2,7 @@ using System;
 
 class Program
 {
-    static int Pozition(int N)
+    static int pozition(int N)
     {
         int pozition = -1;
         int number;
@@ -30,19 +30,32 @@ class Program
         }
     }
 
+    static void bags(int tryNumber)
+    {
+        if (tryNumber < 0)
+        {
+            Console.WriteLine("вводите только положительное число");
+            Environment.Exit(0);
+        }
+    }
+
     static void Main(string[] args)
     {
-        Console.WriteLine("Сколько чисел вы планируете вводить?");
-        int numberCount = int.Parse(Console.ReadLine());
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.WriteLine("сколько чисел вы планируете вводить?");
+        int numberCount;
+        numberCount = Convert.ToInt32(Console.ReadLine());
+        bags(numberCount);
         
-        Console.WriteLine("Вводите числа");
+        Console.WriteLine("вводите числа ");
         int number;
         int sum = 0;
         
         for (int i = numberCount; i > 0; i--)
         {
-            number = int.Parse(Console.ReadLine());
-            sum += Pozition(number);
+            number = Convert.ToInt32(Console.ReadLine());
+            bags(number);
+            sum += pozition(number);
         }
         
         Console.WriteLine(sum);
