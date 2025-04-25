@@ -1,4 +1,5 @@
 use std::io;
+use std::process;
 
 fn pozition(n: i32) -> i32 {
     let mut position = -1;
@@ -21,25 +22,29 @@ fn pozition(n: i32) -> i32 {
     }
 }
 
+fn bags(try_number: i32) {
+    if try_number < 0 {
+        println!("вводите только положительное число");
+        process::exit(0);
+    }
+}
+
 fn main() {
-    println!("Сколько чисел вы планируете вводить?");
+    println!("сколько чисел вы планируете вводить?");
     
-    let mut number_count = String::new();
-    io::stdin()
-        .read_line(&mut number_count)
-        .expect("Ошибка чтения ввода");
-    let number_count: i32 = number_count.trim().parse().expect("Введите число");
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Ошибка чтения");
+    let number_count: i32 = input.trim().parse().expect("Введите число");
+    bags(number_count);
     
-    println!("Вводите числа");
+    println!("вводите числа");
     let mut sum = 0;
     
-    for _ in (1..=number_count).rev() {
-        let mut number = String::new();
-        io::stdin()
-            .read_line(&mut number)
-            .expect("Ошибка чтения ввода");
-        let number: i32 = number.trim().parse().expect("Введите число");
-        
+    for _ in 0..number_count {
+        let mut num_input = String::new();
+        io::stdin().read_line(&mut num_input).expect("Ошибка чтения");
+        let number: i32 = num_input.trim().parse().expect("Введите число");
+        bags(number);
         sum += pozition(number);
     }
     
