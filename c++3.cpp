@@ -24,16 +24,25 @@ int pozition(int N){
 		return 0;
 	}
 }
+void bags(int tryNumber) {
+	if(tryNumber < 0) {
+		cout << "вводите только положительное число" << endl;
+		exit(0);
+	}
+}
 
 int main(){
+	setlocale(LC_ALL, "Russian");
 	cout << "сколько чисел вы планируете вводить?" << endl;
 	int numberCount;
 	cin >> numberCount;
+	bags(numberCount);
 	cout << "вводите числа " << endl;
 	int number;
 	int sum = 0;
 	for (int i = numberCount; i > 0; i--) {
 		cin >> number;
+		bags(number);
 		sum += pozition(number);
 	}
 	cout << sum;
