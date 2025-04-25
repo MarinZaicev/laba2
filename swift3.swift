@@ -1,3 +1,5 @@
+import Foundation
+
 func pozition(_ N: Int) -> Int {
     var position = -1
     var number: Int
@@ -20,25 +22,36 @@ func pozition(_ N: Int) -> Int {
     }
 }
 
+func bags(_ tryNumber: Int) {
+    if tryNumber < 0 {
+        print("вводите только положительное число")
+        exit(0)
+    }
+}
+
 func main() {
-    print("Сколько чисел вы планируете вводить?")
+    print("сколько чисел вы планируете вводить?")
+    
     guard let numberCount = Int(readLine() ?? "") else {
         print("Ошибка ввода")
         return
     }
+    bags(numberCount)
     
-    print("Вводите числа")
+    print("вводите числа")
     var sum = 0
     
     for _ in stride(from: numberCount, to: 0, by: -1) {
         guard let number = Int(readLine() ?? "") else {
-            print("Ошибка ввода числа")
-            return
+            print("Ошибка ввода")
+            continue
         }
+        bags(number)
         sum += pozition(number)
     }
     
     print(sum)
 }
 
+// Вызов основной функции
 main()
