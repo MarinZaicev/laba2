@@ -13,22 +13,31 @@ fun pozition(N: Int): Int {
         }
     }
     
-    return if (positionCount == (position + 1) / 2 && position > 0) {
+    return if ((positionCount == (position + 1) / 2) && (position > 0)) {
         N
     } else {
         0
     }
 }
 
+fun bags(tryNumber: Int) {
+    if (tryNumber < 0) {
+        println("вводите только положительное число")
+        System.exit(0)
+    }
+}
+
 fun main() {
-    println("Сколько чисел вы планируете вводить?")
-    val numberCount = readLine()?.toIntOrNull() ?: 0
+    println("сколько чисел вы планируете вводить?")
+    val numberCount = readLine()!!.toInt()
+    bags(numberCount)
     
-    println("Вводите числа")
+    println("вводите числа")
     var sum = 0
     
     for (i in numberCount downTo 1) {
-        val number = readLine()?.toIntOrNull() ?: 0
+        val number = readLine()!!.toInt()
+        bags(number)
         sum += pozition(number)
     }
     
