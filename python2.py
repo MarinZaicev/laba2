@@ -24,17 +24,14 @@ def check_binary(S):
             print("Строка бинарная и должна состоять только из 0 и 1")
             exit(0)
 
-def main():
-    S = input("Введите бинарную строку: ")
-    check_binary(S)
+# Основной код программы
+S = input("Введите бинарную строку: ")
+check_binary(S)
     
-    K = int(input("Введите число K: "))
-    if K < 0:
-        print("Данное число не может быть меньше 0")
-        exit(0)
+K = int(input("Введите число K: "))
+if K < 0:
+    print("Данное число не может быть меньше 0")
+    exit(0)
     
-    result = zamena_zero(S, K)
-    print(f"Максимальная длина последовательности единиц: {result}")
-
-if __name__ == "__main__":
-    main()
+result = zamena_zero(S, K)
+print(f"Максимальная длина последовательности единиц: {result}")
