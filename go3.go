@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 func pozition(N int) int {
 	pozition := -1
-	number := 0
+	var number int
 	pozitionCount := 0
 	newN := N
 
@@ -21,19 +22,31 @@ func pozition(N int) int {
 
 	if (pozitionCount == (pozition+1)/2) && (pozition > 0) {
 		return N
+	} else {
+		return 0
 	}
-	return 0
+}
+
+func bags(tryNumber int) {
+	if tryNumber < 0 {
+		fmt.Println("вводите только положительное число")
+		os.Exit(0)
+	}
 }
 
 func main() {
-	var numberCount, number, sum int
-
-	fmt.Println("Сколько чисел вы планируете вводить?")
+	fmt.Println("сколько чисел вы планируете вводить?")
+	var numberCount int
 	fmt.Scan(&numberCount)
+	bags(numberCount)
 
-	fmt.Println("Вводите числа")
+	fmt.Println("вводите числа ")
+	var number int
+	sum := 0
+
 	for i := numberCount; i > 0; i-- {
 		fmt.Scan(&number)
+		bags(number)
 		sum += pozition(number)
 	}
 
