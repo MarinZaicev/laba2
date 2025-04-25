@@ -19,14 +19,24 @@ def pozition(n)
   end
 end
 
-puts "Сколько чисел вы планируете вводить?"
-number_count = gets.chomp.to_i
+def bags(try_number)
+  if try_number < 0
+    puts "вводите только положительное число"
+    exit(0)
+  end
+end
 
-puts "Вводите числа"
+# Основная программа
+puts "сколько чисел вы планируете вводить?"
+number_count = gets.chomp.to_i
+bags(number_count)
+
+puts "вводите числа"
 sum = 0
 
 number_count.downto(1) do |i|
   number = gets.chomp.to_i
+  bags(number)
   sum += pozition(number)
 end
 
