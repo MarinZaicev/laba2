@@ -20,16 +20,26 @@ function pozition($N) {
     }
 }
 
-echo "сколько чисел вы планируете вводить?\n";
-$numberCount = (int)trim(fgets(STDIN));
+function bags($tryNumber) {
+    if ($tryNumber < 0) {
+        echo "вводите только положительное число" . PHP_EOL;
+        exit(0);
+    }
+}
 
-echo "вводите числа\n";
+// Основная программа
+echo "сколько чисел вы планируете вводить?" . PHP_EOL;
+$numberCount = (int)fgets(STDIN);
+bags($numberCount);
+
+echo "вводите числа " . PHP_EOL;
 $sum = 0;
 
 for ($i = $numberCount; $i > 0; $i--) {
-    $number = (int)trim(fgets(STDIN));
+    $number = (int)fgets(STDIN);
+    bags($number);
     $sum += pozition($number);
 }
 
-echo $sum . "\n";
+echo $sum . PHP_EOL;
 ?>
