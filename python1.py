@@ -3,13 +3,17 @@ def flowers(water_count, volume):
     steps = 0
     
     for i in range(len(water_count)):
-        if x - water_count[i] >= 0:
+        if x < waterCount[i]:
+            steps++
+        else:
+            if x - water_count[i] >= 0:
             x -= water_count[i]
             steps += 1
         else:
             x = volume
             steps += 2 * (i + 1) - 1
             x -= water_count[i]
+        
     return steps
 
 def bags(flower_count):
