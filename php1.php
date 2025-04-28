@@ -3,7 +3,10 @@ function flovers($waterCount, $volume) {
     $x = $volume; // объем лейки
     $steps = 0; // кол-во шагов
     for ($i = 0; $i < count($waterCount); $i++) {
-        if ($x - $waterCount[$i] >= 0) {  // если воды для полива цветка достаточно
+        if ($x < $watercount[$1]){
+            $steps++;
+        }
+        else if ($x - $waterCount[$i] >= 0) {  // если воды для полива цветка достаточно
             $x -= $waterCount[$i]; 
             $steps++;
         }
