@@ -6,13 +6,18 @@ fun flowers(waterCount: List<Int>, volume: Int): Int {
     var steps = 0 // кол-во шагов
 
     for (i in waterCount.indices) {
-        if (x - waterCount[i] >= 0) { // если воды достаточно
+        if (x < waterCount[i]){
+            steps++;
+        }
+        else{
+            if (x - waterCount[i] >= 0) { // если воды достаточно
             x -= waterCount[i]
             steps++
         } else { // если воды недостаточно
             x = volume // набираем лейку у реки
             steps += 2 * (i + 1) - 1 // шаги до реки и обратно
             x -= waterCount[i]
+        }
         }
     }
     return steps
