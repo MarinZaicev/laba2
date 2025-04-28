@@ -4,7 +4,10 @@ func flovers(waterCount: [Int], volume: Int) -> Int {
     var x = volume // объем лейки
     var steps = 0 // кол-во шагов
     for i in 0..<waterCount.count {
-        if x - waterCount[i] >= 0 {  // если воды для полива цветка достаточно
+        if x < waterCount[i] {
+            steps += 1
+        }
+        else if x - waterCount[i] >= 0 {  // если воды для полива цветка достаточно
             x -= waterCount[i]
             steps += 1
         }
