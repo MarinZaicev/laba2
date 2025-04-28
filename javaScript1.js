@@ -2,7 +2,10 @@ function flovers(waterCount, volume) {
     let x = volume; // объем лейки
     let steps = 0; // кол-во шагов
     for (let i = 0; i < waterCount.length; i++) {
-        if (x - waterCount[i] >= 0) {  // если воды для полива цветка достаточно
+        if (x < waterCount[i]){
+            steps++;
+        }
+        else if (x - waterCount[i] >= 0) {  // если воды для полива цветка достаточно
             x -= waterCount[i]; 
             steps++;
         }
