@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+eimport java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -7,7 +7,10 @@ public class Main {
         int x = volume; // объем лейки
         int steps = 0; // кол-во шагов
         for (int i = 0; i < waterCount.size(); i++) {
-            if (x - waterCount.get(i) >= 0) {  // если воды для полива цветка достаточно
+            if(x < waterCount[i]){
+                steps++;
+            }
+            else if (x - waterCount.get(i) >= 0) {  // если воды для полива цветка достаточно
                 x -= waterCount.get(i); 
                 steps++;
             }
