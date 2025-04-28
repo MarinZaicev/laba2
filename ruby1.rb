@@ -3,7 +3,10 @@ def flowers(water_count, volume)
   steps = 0  # кол-во шагов
 
   water_count.each_with_index do |water, i|
-    if x - water >= 0 # если воды достаточно
+    if x < water
+      steps += 1
+    else
+      if x - water >= 0 # если воды достаточно
       x -= water
       steps += 1
     else # если воды недостаточно
