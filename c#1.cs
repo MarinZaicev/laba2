@@ -10,6 +10,9 @@ class Program
         
         for (int i = 0; i < waterCount.Count; i++)
         {
+            if (x < waterCount[i]){
+                steps++;
+            }
             if (x - waterCount[i] >= 0) // если воды достаточно
             {
                 x -= waterCount[i];
