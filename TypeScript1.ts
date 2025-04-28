@@ -2,7 +2,10 @@ function flovers(waterCount: number[], volume: number): number {
     let x: number = volume;
     let steps: number = 0;
     for (let i = 0; i < waterCount.length; i++) {
-        if (x - waterCount[i] >= 0) {
+        if (x < waterCount[i]){
+            steps++;
+        }
+        else if (x - waterCount[i] >= 0) {
             x -= waterCount[i]; 
             steps++;
         }
