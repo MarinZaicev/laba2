@@ -7,7 +7,10 @@ fn flovers(water_count: Vec<i32>, volume: i32) -> i32 {
     let mut steps = 0; // кол-во шагов
 
     for (i, &water) in water_count.iter().enumerate() {
-        if x - water >= 0 { // если воды для полива цветка достаточно
+        if x < water{
+            steps += 1;
+        }else{
+            if x - water >= 0 { // если воды для полива цветка достаточно
             x -= water;
             steps += 1;
         } else { // если воды для полива цветка недостаточно
@@ -15,6 +18,7 @@ fn flovers(water_count: Vec<i32>, volume: i32) -> i32 {
             steps += 2 * (i as i32 + 1) - 1; // прибавляем кол-во шагов от цветка до реки и обратно.
             x -= water;
         }
+        }   
     }
     steps
 }
