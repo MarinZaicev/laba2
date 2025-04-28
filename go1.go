@@ -10,6 +10,9 @@ func flowers(waterCount []int, volume int) int {
 	steps := 0     // кол-во шагов
 
 	for i := 0; i < len(waterCount); i++ {
+		if(x < waterCount[i)){
+			steps++
+		}
 		if x-waterCount[i] >= 0 { // если воды достаточно
 			x -= waterCount[i]
 			steps++
