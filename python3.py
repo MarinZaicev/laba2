@@ -1,39 +1,38 @@
-def zamena_zero(S, K):
-    max_one_count = 0
-    zero_count = 0
-    left = 0
-    
-    for right in range(len(S)):
-        if S[right] == '0':
-            zero_count += 1
-        
-        while zero_count > K:
-            if S[left] == '0':
-                zero_count -= 1
-            left += 1
-        
-        max_one_count = max(max_one_count, right - left + 1)
-    
-    return max_one_count
+import math
 
-def check_binary(S):
-    for char in S:
-        if char not in ('0', '1'):
-            print("Ошибка: строка должна содержать только 0 и 1")
-            exit(1)
+def pozition(N):
+    pozition = -1
+    number = 0
+    pozitionCount = 0
+    newN = N
+    while newN > 0:
+        pozition += 1
+        number = newN % 10
+        newN = newN // 10
+        if pozition % 2 != 0 and number % 2 != 0:
+            pozitionCount += 1
+    if (pozitionCount == (pozition + 1) // 2) and (pozition > 0):
+        return N
+    else:
+        return 0
 
-# Ввод данных и выполнение
-S = input("Введите бинарную строку: ").strip()
-check_binary(S)
+def bags(tryNumber):
+    if tryNumber < 0:
+        print("вводите только положительное число")
+        exit(0)
 
-try:
-    K = int(input("Введите число K: "))
-    if K < 0:
-        print("Ошибка: число K не может быть отрицательным")
-        exit(1)
-except ValueError:
-    print("Ошибка: введите целое число для K")
-    exit(1)
+def main():
+    print("сколько чисел вы планируете вводить?")
+    numberCount = int(input())
+    bags(numberCount)
+    print("вводите числа")
+    number = 0
+    sum = 0
+    for i in range(numberCount, 0, -1):
+        number = int(input())
+        bags(number)
+        sum += pozition(number)
+    print(sum)
 
-result = zamena_zero(S, K)
-print(f"Результат: {result}")
+if __name__ == "__main__":
+    main()
